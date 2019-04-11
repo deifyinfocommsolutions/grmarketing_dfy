@@ -20,7 +20,7 @@ ynh_add_nginx5_config () {
 		ynh_replace_string "__PORT__" "$port" "$finalnginxconf"
 	fi
 	if test -n "${app:-}"; then
-		ynh_replace_string "__NAME__" "${PHP5}-fpm-$app" "$finalnginxconf"
+		ynh_replace_string "__NAME__" "${PHP5}-fpm" "$finalnginxconf"
 	fi
 	if test -n "${final_path:-}"; then
 		ynh_replace_string "__FINALPATH__" "$final_path" "$finalnginxconf"
@@ -58,7 +58,8 @@ ynh_add_fpm5_config () {
 	finalphpconf="/etc/php/5.6/fpm/pool.d/$app.conf"
 	sudo cp ../conf/php-fpm.conf "$finalphpconf"
 	ynh_replace_string "__NAMETOCHANGE__" "$app" "$finalphpconf"
-	ynh_replace_string "__PHPNAMETOCHANGE__" "${PHP5}-fpm-$app" "$finalphpconf"
+	#ynh_replace_string "__PHPNAMETOCHANGE__" "${PHP5}-fpm-$app" "$finalphpconf"
+	ynh_replace_string "__PHPNAMETOCHANGE__" "php/${PHP5}-fpm" "$finalphpconf"
 	ynh_replace_string "__FINALPATH__" "$final_path" "$finalphpconf"
 	ynh_replace_string "__USER__" "$app" "$finalphpconf"
 	sudo chown root: "$finalphpconf"
