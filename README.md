@@ -1,2 +1,1 @@
-# grmarketing_dfy
-GR Marketing Website for iBeads
+GR Marketing Website for ibeads
